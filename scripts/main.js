@@ -26,5 +26,8 @@ async function displayLoginStatus() {
     $('#login').hide();
     $('#logout').show();
     $('#user').text(session.webId);
+    // Use the user's WebID as default profile
+    if (!$('#profile').val())
+      $('#profile').val(session.webId);
   }
 }
