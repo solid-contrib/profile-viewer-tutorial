@@ -30,4 +30,14 @@ $('#view').click(async () => {
   // Display their details
   const fullName = store.any($rdf.sym(person), FOAF('name'));
   $('#fullName').text(fullName && fullName.value);
+
+  // Display their friends
+  const friends = store.each($rdf.sym(person), FOAF('knows'));
+  $('#friends').empty();
+  friends.forEach(async (friend) => {
+    await fetcher.load(friend);
+    const fullName = store.any(friend, FOAF('name'));
+    $('#friends').append($('<li>')
+      .text(fullName && fullName.value || friend.value));
+  });
 });
