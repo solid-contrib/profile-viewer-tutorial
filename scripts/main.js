@@ -57,7 +57,7 @@ async function loadProfile(person) {
     $('#friends').append(
       $('<li>').append(
         $('<a>', { href: 'javascript:' })
-          .text(fullName && fullName.value)
+          .text(fullName && fullName.value || friendNode.value)
           .click(() => loadProfile(friend.value))
       )
     );
