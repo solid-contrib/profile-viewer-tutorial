@@ -45,6 +45,7 @@ async function loadProfile(person) {
   await fetcher.load(person);
   const fullName = store.any($rdf.sym(person), VCARD('fn'));
   $('#viewer').show();
+  $('#profile').val(person);
   $('#fullName').text(fullName && fullName.value);
 
   // Load the person's friends
@@ -53,6 +54,12 @@ async function loadProfile(person) {
   friends.forEach(async (friend) => {
     await fetcher.load(friend);
     const fullName = store.any(friend, VCARD('fn'));
-    $('#friends').append($('<li>').text(fullName && fullName.value));
+    $('#friends').append(
+      $('<li>').append(
+        $('<a>', { href: 'javascript:' })
+          .text(fullName && fullName.value)
+          .click(() => loadProfile(friend.value))
+      )
+    );
   });
 }
