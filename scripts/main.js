@@ -1,10 +1,16 @@
 $(async () => {
   $('#login button').click(login);
+  $('#logout button').click(logout);
   await displayLoginStatus();
 });
 
 async function login() {
   await SolidAuthClient.popupLogin({ popupUri: 'scripts/login.html' });
+  displayLoginStatus();
+}
+
+async function logout() {
+  await SolidAuthClient.logout();
   displayLoginStatus();
 }
 
