@@ -3,6 +3,14 @@ body {
   margin: 0 auto;
 }
 
-body, input {
+body, input, button {
   font: 11pt/1.3 "Helvetiva Neue", Helvetica, Arial, sans-serif;
+}
+
+button, label {
+  font-weight: bold;
+}
+
+#profile {
+  width: 400px;
 }

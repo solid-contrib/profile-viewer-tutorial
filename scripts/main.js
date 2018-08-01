@@ -8,5 +8,10 @@ solid.auth.trackSession(session => {
   const loggedIn = !!session;
   $('#login').toggle(!loggedIn);
   $('#logout').toggle(loggedIn);
-  $('#user').text(session && session.webId);
+  if (loggedIn) {
+    $('#user').text(session.webId);
+    // Use the user's WebID as default profile
+    if (!$('#profile').val())
+      $('#profile').val(session.webId);
+  }
 });
