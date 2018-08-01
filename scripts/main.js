@@ -18,7 +18,7 @@ solid.auth.trackSession(session => {
   }
 });
 
-$('#view').click(async () => {
+$('#view').click(async function loadProfile() {
   // Set up a local data store and associated data fetcher
   const store = $rdf.graph();
   const fetcher = new $rdf.Fetcher(store);
@@ -37,7 +37,10 @@ $('#view').click(async () => {
   friends.forEach(async (friend) => {
     await fetcher.load(friend);
     const fullName = store.any(friend, FOAF('name'));
-    $('#friends').append($('<li>')
-      .text(fullName && fullName.value || friend.value));
+    $('#friends').append(
+      $('<li>').append(
+        $('<a>').text(fullName && fullName.value || friend.value)
+                .click(() => $('#profile').val(friend.value))
+                .click(loadProfile)));
   });
 });
