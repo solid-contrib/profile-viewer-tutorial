@@ -56,7 +56,7 @@ async function loadProfile(person) {
     const fullName = store.any(friend, VCARD('fn'));
     $('#friends').append(
       $('<li>').append(
-        $('<a>', { href: 'javascript:' })
+        $('<a>')
           .text(fullName && fullName.value || friendNode.value)
           .click(() => loadProfile(friend.value))
       )

@@ -23,3 +23,12 @@ dt {
 dt:after {
   content: ': ';
 }
+
+a {
+  color: #7c4dff;
+  border-bottom: 1px solid;
+  cursor: pointer;
+}
+a:hover {
+  color: #9b79fc;
+}
