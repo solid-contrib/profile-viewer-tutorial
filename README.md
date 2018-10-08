@@ -20,3 +20,5 @@ Then move to the next step,
 git checkout tutorials/lunch-break/steps/02
 
 refresh your browser, and so forth.
+
+[Demo](https://solid.github.io/profile-viewer-tutorial/)
